@@ -10,6 +10,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  bool obscureText = true;
   //text editing controllers
   final emailTextController = TextEditingController();
   final passwordTextController = TextEditingController();
@@ -47,18 +48,46 @@ class _LoginPageState extends State<LoginPage> {
 
                   //email textfield
                   MyTextField(
-                      controller: emailTextController,
-                      hintText: "Email Address",
-                      obscureText: false),
+                    controller: emailTextController,
+                    hintText: "Email Address",
+                    obscureText: false,
+                    icon: Icons.email,
+                  ),
 
                   const SizedBox(
                     height: 5,
                   ),
 
-                  MyTextField(
-                      controller: passwordTextController,
-                      hintText: "Password",
-                      obscureText: true),
+                  TextFormField(
+                    key: const ValueKey('Password'),
+                    decoration: InputDecoration(
+                        enabledBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Color.fromARGB(255, 2, 83, 126),
+                          ),
+                        ),
+                        focusedBorder: const OutlineInputBorder(
+                          borderSide: BorderSide(
+                            color: Colors.black,
+                          ),
+                        ),
+                        fillColor: Colors.grey.shade200,
+                        filled: true,
+                        prefixIcon: const Icon(Icons.password_outlined),
+                        suffixIcon: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              obscureText = !obscureText;
+                            });
+                          },
+                          child: Icon(obscureText
+                              ? Icons.visibility
+                              : Icons.visibility_off),
+                        ),
+                        hintText: "Password",
+                        hintStyle: TextStyle(color: Colors.grey[500])),
+                    obscureText: obscureText,
+                  ),
 
                   const SizedBox(
                     height: 10,
