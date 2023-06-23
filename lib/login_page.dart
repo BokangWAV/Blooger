@@ -2,7 +2,6 @@ import 'package:blogger/components/button.dart';
 import 'package:blogger/components/text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 
 class LoginPage extends StatefulWidget {
   final Function()? onTap;
@@ -33,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
         email: emailTextController.text.trim(),
         password: passwordTextController.text.trim(),
       );
+
       // pop loading dialog if logged in
       if (context.mounted) Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
@@ -90,7 +90,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                   //Welcome Back Message
                   const Text(
-                    "Welcome Back, Login & Get Blogging!",
+                    "Login & Get Blogging!",
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Sansita',

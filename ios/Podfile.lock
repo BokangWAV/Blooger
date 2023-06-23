@@ -27,6 +27,9 @@ PODS:
   - Flutter (1.0.0)
   - flutter_native_splash (0.0.1):
     - Flutter
+  - fluttertoast (0.0.2):
+    - Flutter
+    - Toast
   - GoogleUtilities/AppDelegateSwizzler (7.11.1):
     - GoogleUtilities/Environment
     - GoogleUtilities/Logger
@@ -44,12 +47,14 @@ PODS:
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (3.1.1)
   - PromisesObjC (2.2.0)
+  - Toast (4.0.0)
 
 DEPENDENCIES:
   - firebase_auth (from `.symlinks/plugins/firebase_auth/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - Flutter (from `Flutter`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
+  - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
 
 SPEC REPOS:
   trunk:
@@ -61,6 +66,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMSessionFetcher
     - PromisesObjC
+    - Toast
 
 EXTERNAL SOURCES:
   firebase_auth:
@@ -71,6 +77,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_native_splash:
     :path: ".symlinks/plugins/flutter_native_splash/ios"
+  fluttertoast:
+    :path: ".symlinks/plugins/fluttertoast/ios"
 
 SPEC CHECKSUMS:
   Firebase: facd334e557a979bd03a0b58d90fd56b52b8aba0
@@ -82,9 +90,11 @@ SPEC CHECKSUMS:
   FirebaseCoreInternal: 9e46c82a14a3b3a25be4e1e151ce6d21536b89c0
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_native_splash: 52501b97d1c0a5f898d687f1646226c1f93c56ef
+  fluttertoast: fafc4fa4d01a6a9e4f772ecd190ffa525e9e2d9c
   GoogleUtilities: 9aa0ad5a7bc171f8bae016300bfcfa3fb8425749
   GTMSessionFetcher: e8647203b65cee28c5f73d0f473d096653945e72
   PromisesObjC: 09985d6d70fbe7878040aa746d78236e6946d2ef
+  Toast: 91b396c56ee72a5790816f40d3a94dd357abc196
 
 PODFILE CHECKSUM: 70d9d25280d0dd177a5f637cdb0f0b0b12c6a189
 

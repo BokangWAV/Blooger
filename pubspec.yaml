@@ -40,6 +40,7 @@ dependencies:
   firebase_auth: ^4.6.3
   # add this line to your dependencies
   fluttertoast: ^8.2.2
+  cloud_firestore: ^4.8.1
 
 flutter_native_splash:
   android: true

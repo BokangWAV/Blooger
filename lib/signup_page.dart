@@ -17,9 +17,9 @@ class _SignUpPageState extends State<SignUpPage> {
   //text editing controllers
   final emailTextController = TextEditingController();
   final usernameTextController = TextEditingController();
-  final fullnameTextController = TextEditingController();
   final passwordTextController = TextEditingController();
   final confirmPasswordTextController = TextEditingController();
+  final FirebaseAuth mAuth = FirebaseAuth.instance;
 
   ///**Allow users to sign up for the app */
   void signUp() async {
@@ -31,6 +31,14 @@ class _SignUpPageState extends State<SignUpPage> {
               ),
             ));
     //make sure passwords match
+    if (emailTextController.text.isEmpty ||
+        passwordTextController.text.isEmpty ||
+        usernameTextController.text.isEmpty ||
+        confirmPasswordTextController.text.isEmpty) {
+      Navigator.pop(context);
+      displayMessage("All Fields Are Required");
+      return;
+    }
 
     if (passwordTextController.text != confirmPasswordTextController.text) {
       //pop loading circle
@@ -38,12 +46,20 @@ class _SignUpPageState extends State<SignUpPage> {
       displayMessage("Password's Do Not Match");
       return;
     }
+    //ensure user enters a valid username
+    if (usernameTextController.text.isEmpty) {
+      Navigator.pop(context);
+      displayMessage("Please Enter A Username");
+      return;
+    }
 
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
-          email: emailTextController.text.trim(),
-          password: passwordTextController.text.trim());
-
+      final userCredential = await FirebaseAuth.instance
+          .createUserWithEmailAndPassword(
+              email: emailTextController.text.trim(),
+              password: passwordTextController.text.trim());
+      //add our user to database
+      userCredential.user?.updateDisplayName(usernameTextController.text);
       //pop after sign up
       if (context.mounted) Navigator.pop(context);
     } on FirebaseAuthException catch (e) {
@@ -62,8 +78,10 @@ class _SignUpPageState extends State<SignUpPage> {
       display = "Email Address Required";
     } else if (message == 'email-already-in-use') {
       display = "User Already Exists";
-    } else {
+    } else if (message == 'invalid-email') {
       display = "Invalid Email Address";
+    } else {
+      display = message;
     }
     showDialog(
         context: context,
@@ -99,7 +117,7 @@ class _SignUpPageState extends State<SignUpPage> {
                   ),
                   //Welcome Back Message
                   const Text(
-                    "Welcome To Blogger, Ready To Get Blogging?",
+                    "Ready To Get Blogging, SignUp?",
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Sansita',
@@ -122,16 +140,6 @@ class _SignUpPageState extends State<SignUpPage> {
                     height: 5,
                   ),
 
-                  MyTextField(
-                    controller: fullnameTextController,
-                    hintText: "Full Name",
-                    obscureText: false,
-                    icon: Icons.person_2_outlined,
-                  ),
-
-                  const SizedBox(
-                    height: 5,
-                  ),
                   //email textfield
                   MyTextField(
                     controller: emailTextController,

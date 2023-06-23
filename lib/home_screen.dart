@@ -8,23 +8,29 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-void signOut() {
-  FirebaseAuth.instance.signOut();
-}
-
 class _HomePageState extends State<HomePage> {
+  final currentUser = FirebaseAuth.instance.currentUser!;
+
+  void signOut() {
+    FirebaseAuth.instance.signOut();
+  }
+
   @override
   Widget build(BuildContext context) {
+    setState(() {});
     return Scaffold(
       appBar: AppBar(
         title: const Text(
           "Blogger",
-          style: TextStyle(fontFamily: 'GT-America'),
+          style: TextStyle(fontFamily: 'GT-America', fontSize: 25),
         ),
-        actions: const [
-          IconButton(onPressed: signOut, icon: Icon(Icons.logout))
+        actions: [
+          IconButton(onPressed: signOut, icon: const Icon(Icons.logout))
         ],
+        backgroundColor: Colors.blueGrey,
       ),
+      body:
+          Column(children: [Text("Logged in as: ${currentUser.displayName}")]),
     );
   }
 }
