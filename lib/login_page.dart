@@ -27,6 +27,42 @@ class _LoginPageState extends State<LoginPage> {
                 color: Colors.indigo,
               ),
             ));
+    if (emailTextController.text.isEmpty) {
+      Navigator.pop(context);
+      showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+                title: Text(
+                  "Please Input An Email Address",
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 22, 39, 48),
+                      fontFamily: 'GT-America',
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+                backgroundColor: Color.fromARGB(255, 234, 240, 243),
+                elevation: 24.0,
+              ));
+      return;
+    } else if (passwordTextController.text.isEmpty) {
+      Navigator.pop(context);
+      showDialog(
+          context: context,
+          builder: (context) => const AlertDialog(
+                title: Text(
+                  "Please Input Your Password",
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 22, 39, 48),
+                      fontFamily: 'GT-America',
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
+                backgroundColor: Color.fromARGB(255, 234, 240, 243),
+                elevation: 24.0,
+              ));
+      return;
+    }
+
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailTextController.text.trim(),
@@ -86,7 +122,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
 
                   const SizedBox(
-                    height: 30,
+                    height: 15,
                   ),
                   //Welcome Back Message
                   const Text(
@@ -164,7 +200,8 @@ class _LoginPageState extends State<LoginPage> {
                     children: [
                       const Text(
                         "Not A Blogger Yet? ",
-                        style: TextStyle(fontFamily: 'GT-America'),
+                        style:
+                            TextStyle(fontFamily: 'GT-America', fontSize: 15),
                       ),
                       const SizedBox(
                         width: 3,
@@ -176,7 +213,8 @@ class _LoginPageState extends State<LoginPage> {
                           style: TextStyle(
                               fontFamily: 'GT-America',
                               fontWeight: FontWeight.bold,
-                              color: Colors.blue),
+                              color: Colors.blue,
+                              fontSize: 15),
                         ),
                       )
                     ],

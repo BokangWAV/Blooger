@@ -72,6 +72,7 @@ flutter:
   uses-material-design: true
   assets: 
     - /Users/bokang/Desktop/Side Projects/Blogger/blogger/assets/main-logo-black-transparent.png
+    - /Users/bokang/Desktop/Side Projects/Blogger/blogger/assets/main-logo-white-transparent.png
   
   fonts:
     - family: Sansita

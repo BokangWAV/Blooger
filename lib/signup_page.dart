@@ -115,9 +115,13 @@ class _SignUpPageState extends State<SignUpPage> {
                       '/Users/bokang/Desktop/Side Projects/Blogger/blogger/assets/main-logo-black-transparent.png',
                     ),
                   ),
-                  //Welcome Back Message
+
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  //Sign Up Message
                   const Text(
-                    "Ready To Get Blogging, SignUp?",
+                    "Signup & Start Blogging!",
                     style: TextStyle(
                       fontSize: 20,
                       fontFamily: 'Sansita',
@@ -238,7 +242,8 @@ class _SignUpPageState extends State<SignUpPage> {
                     children: [
                       const Text(
                         "Have An Account Already? ",
-                        style: TextStyle(fontFamily: 'GT-America'),
+                        style:
+                            TextStyle(fontFamily: 'GT-America', fontSize: 15),
                       ),
                       const SizedBox(
                         width: 3,
@@ -250,7 +255,8 @@ class _SignUpPageState extends State<SignUpPage> {
                           style: TextStyle(
                               fontFamily: 'GT-America',
                               fontWeight: FontWeight.bold,
-                              color: Colors.blue),
+                              color: Colors.blue,
+                              fontSize: 15),
                         ),
                       )
                     ],
