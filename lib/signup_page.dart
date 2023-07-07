@@ -80,22 +80,27 @@ class _SignUpPageState extends State<SignUpPage> {
       display = "User Already Exists";
     } else if (message == 'invalid-email') {
       display = "Invalid Email Address";
+    } else if (message == 'network-request-failed') {
+      display = "No Internet Connection";
     } else {
       display = message;
     }
     showDialog(
         context: context,
         builder: (context) => AlertDialog(
-              title: Text(
-                display,
-                style: const TextStyle(
-                    color: Color.fromARGB(255, 22, 39, 48),
-                    fontFamily: 'GT-America',
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold),
+              title: Center(
+                child: Text(
+                  display,
+                  style: const TextStyle(
+                      color: Color.fromARGB(255, 22, 39, 48),
+                      fontFamily: 'GT-America',
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold),
+                ),
               ),
               backgroundColor: const Color.fromARGB(255, 234, 240, 243),
-              elevation: 24.0,
+              shadowColor: Colors.blueGrey,
+              //elevation: 24.0,
             ));
   }
 

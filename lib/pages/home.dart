@@ -1,11 +1,24 @@
+import 'package:blogger/display/bubble_stories.dart';
+import 'package:blogger/display/user_posts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 class UserHome extends StatelessWidget {
-  const UserHome({super.key});
+  UserHome({super.key});
+
   void signOut() {
     FirebaseAuth.instance.signOut();
   }
+
+  final List people = [
+    'bokang.wav',
+    'saba',
+    'joeybadass',
+    'smino',
+    'mickjenkins',
+    'tobilou'
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +55,27 @@ class UserHome extends StatelessWidget {
         backgroundColor: Colors.blueGrey,
       ),
       backgroundColor: const Color.fromARGB(255, 211, 222, 226),
-      body: const Center(child: Text('Home')),
+      body: Column(children: [
+        Container(
+          height: 130,
+          child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: people.length,
+              itemBuilder: (context, index) {
+                return BubbleStories(text: people[index]);
+              }),
+        ),
+
+        //POSTS BY USERS
+        Expanded(
+            child: ListView.builder(
+                itemCount: people.length,
+                itemBuilder: (context, index) {
+                  return UserPosts(
+                    name: people[index],
+                  );
+                })),
+      ]),
     );
   }
 }

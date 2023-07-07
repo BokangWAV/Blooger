@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
 
   //different pages to navigate too
   final List<Widget> pages = [
-    const UserHome(),
+    UserHome(),
     const UserSearch(),
     const UserPost(),
     const UserMessages(),
